@@ -1,3 +1,5 @@
+using System;
+using System.Linq;
 using System.Collections.Generic;
 
 namespace BagOLoot
@@ -20,14 +22,38 @@ namespace BagOLoot
       return newToy;
     }
 
-    public void RevokeToy(Child kid, Toy toy)
+    public void RevokeToy(Toy toy)
     {
-
+      _toys.Remove(toy);
     }
 
     public List<Toy> GetToysForChild(Child kid)
     {
-      return new List<Toy>();
+      List<Toy> toyList = new List<Toy>();
+      // foreach (var toy in _toys)
+      // {
+      //     if (toy.child == kid)
+      //     {
+      //       toyList.Add(toy);
+      //     }
+      // }
+      var theseToys = 
+      from toy in _toys
+      where toy.child == kid
+      select toy;
+      toyList = theseToys.ToList();
+      return toyList;
+    }
+    public Toy GetSingleToy (string toyName, Child kid)
+    {
+      foreach (var item in _toys)
+      {
+          if (item.name == toyName && item.child == kid)
+          {
+            return item;
+          }
+      }
+      throw new Exception();
     }
   }
 }

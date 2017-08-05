@@ -33,8 +33,22 @@ namespace BagOLoot
                     case 2:
                         AddToy.DoAction(bag, book);
                         break;
+                    
+                    case 3:
+                        RemoveToy.DoAction(bag, book);
+                        break;
+
+                    case 4:
+                        ViewToyList.DoAction(bag, book);
+                        break;
+                    case 5:
+                        MarkAsDelivered.DoAction(bag, book);
+                        break;
+                    case 6:
+                        PrintDeliveryReport.DoAction(bag, book);
+                        break;
                 }
-            } while (choice != 3);
+            } while (choice < 7);
         }
     }
 }

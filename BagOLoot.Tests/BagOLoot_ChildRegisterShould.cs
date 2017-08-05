@@ -39,5 +39,13 @@ namespace BagOLoot.Tests
             Child svetlana = _register.GetChild("Svetlana");
             Assert.True(created.name == svetlana.name);
         }
+
+        [Fact]
+        public void MarkAsDelivered()
+        {
+            var created = _register.AddChild("Svetlana");
+            Child svetlana = _register.ChildHasReceivedToys(created);
+            Assert.True(svetlana.delivered == true);
+        }
     }
 }

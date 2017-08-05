@@ -24,5 +24,11 @@ namespace BagOLoot
 
         public Child GetChild (string name) =>  _children.SingleOrDefault(kid => kid.name == name);
         
+        public Child ChildHasReceivedToys (Child kid)
+        {
+            var ChildToBeUpdated = _children.IndexOf(kid);
+            _children[ChildToBeUpdated].delivered = !_children[ChildToBeUpdated].delivered;
+            return _children[ChildToBeUpdated];
+        }
     }
 }
